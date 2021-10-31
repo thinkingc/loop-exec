@@ -1,0 +1,74 @@
+{
+  "name": "loop-exec",
+	"displayName": "loopExec",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.61.0"
+	},
+	"categories": [
+		"Other"
+	],
+  "publisher": "loop-exec",
+	"activationEvents": [
+    "onCommand:autorunjs.startRunJs",
+    "onCommand:autorunjs.stopRunJs"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "autorunjs.startRunJs",
+				"title": "Start Run Js"
+			},
+      {
+				"command": "autorunjs.stopRunJs",
+				"title": "Stop Run Js"
+			}
+		],
+    "menus": {
+      "editor/title": [{
+        "when": "!inOutput && config.code-runner.showRunCommandInEditorContextMenu",
+        "command": "autorunjs.startRunJs",
+        "group": "navigation"
+      }, {
+        "when": "!inOutput && config.code-runner.showRunCommandInEditorContextMenu",
+        "command": "autorunjs.stopRunJs",
+        "group": "navigation"
+    }],
+    "editor/context": [{
+      "when": "!inOutput && config.code-runner.showRunCommandInEditorContextMenu",
+      "command": "autorunjs.startRunJs",
+      "group": "navigation"
+    }, {
+      "when": "!inOutput && config.code-runner.showRunCommandInEditorContextMenu",
+      "command": "autorunjs.stopRunJs",
+      "group": "navigation"
+    }]
+  }
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile && npm run lint",
+		"lint": "eslint src --ext ts",
+		"test": "node ./out/test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.61.0",
+		"@types/glob": "^7.1.4",
+		"@types/mocha": "^9.0.0",
+		"@types/node": "14.x",
+		"@typescript-eslint/eslint-plugin": "^4.31.1",
+		"@typescript-eslint/parser": "^4.31.1",
+		"eslint": "^7.32.0",
+		"glob": "^7.1.7",
+		"mocha": "^9.1.1",
+		"typescript": "^4.4.3",
+		"@vscode/test-electron": "^1.6.2"
+	},
+  "repository": {
+    "url": "git@github.com:thinkingc/loop-exec.git"
+  }
+}
