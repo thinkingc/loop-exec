@@ -45,7 +45,7 @@
       "command": "autorunjs.stopRunJs",
       "group": "navigation"
     }]
-  }
+    }
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
